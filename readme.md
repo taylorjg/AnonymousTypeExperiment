@@ -9,7 +9,7 @@ to view these generated methods.
 Given this anonymous type:
 
 ``` C#
-            var object1 = new {Prop1 = "ABC", Prop2 = 123};
+var object1 = new {Prop1 = "ABC", Prop2 = 123};
 ```
 
 the Equals method looks like this:
