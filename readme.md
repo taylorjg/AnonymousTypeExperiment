@@ -6,29 +6,40 @@ compiler generates for anonymous types. I used
 [Telerik's JustDecompile](http://www.telerik.com/products/decompiler.aspx)
 to view these generated methods.
 
-Given this anonymous type:
+Given this code:
 
-``` C#
+```csharp
 var object1 = new {Prop1 = "ABC", Prop2 = 123};
 var object2 = new {Prop1 = "ABC", Prop2 = 123};
 var actual = object1.Equals(object2);
 Assert.That(actual, Is.True);
 ```
 
-the compiler generates a class with 2 type parameters:
+the compiler generates a class for the anonymous type with 2 type parameters:
 
-``` C#
+```csharp
 internal sealed class <>f__AnonymousType0<<Prop1>j__TPar, <Prop2>j__TPar>
 {
     // ...
 }
 ```
 
-The class name is <>f__AnonymousType0 and the type parameter names are <Prop1>j__TPar and <Prop2>j__TPar.
+The class name is:
+
+```csharp
+<>f__AnonymousType0
+```
+
+and the type parameter names are:
+
+```csharp
+<Prop1>j__TPar
+<Prop2>j__TPar
+```
 
 The Equals method looks like this:
 
-``` C#
+```csharp
 public override bool Equals(object value)
 {
     bool flag;
@@ -49,7 +60,7 @@ public override bool Equals(object value)
 The GetHashCode method looks like this:
 
 
-``` C#
+```csharp
 public override int GetHashCode()
 {
     int hashCode = -1966436625;
